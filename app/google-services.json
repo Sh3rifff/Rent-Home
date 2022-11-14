@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "615571294752",
+    "project_id": "rent-home-f0af8",
+    "storage_bucket": "rent-home-f0af8.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:615571294752:android:bf5c3ba9e26c69fe44ca45",
+        "android_client_info": {
+          "package_name": "az.safekarabakh.renthome"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "615571294752-jm0usoemm4vseguuh0f5p9ubgevqhcut.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBP-FtcRQH4IX6zyAF4EWzGuBLTExZKxNo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "615571294752-jm0usoemm4vseguuh0f5p9ubgevqhcut.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

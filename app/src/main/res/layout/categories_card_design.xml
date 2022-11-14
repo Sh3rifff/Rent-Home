@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="100dp"
+    android:layout_height="32dp"
+    android:layout_centerVertical="true"
+    android:layout_margin="15dp"
+    android:elevation="20dp"
+    app:cardCornerRadius="5dp">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="center_vertical"
+        android:background="#fefefe"
+        android:padding="5dp">
+
+
+        <TextView
+            android:id="@+id/category_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="5dp"
+            android:layout_toEndOf="@+id/category_image"
+            android:text="Menzil"
+            android:textColor="@color/main_color"
+            android:textSize="16sp" />
+
+        <ImageView
+            android:id="@+id/category_image"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_alignParentLeft="true"
+            android:scaleType="centerCrop"
+            android:src="@drawable/chair"
+
+            />
+
+    </RelativeLayout>
+
+</androidx.cardview.widget.CardView>

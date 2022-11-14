@@ -1,0 +1,38 @@
+<resources>
+    <string name="app_name">Rent Home</string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="profile">Profile</string>
+    <string name="map">Map</string>
+    <string name="family">Family</string>
+    <string name="camera">Camera</string>
+    <string name="e_mail">E-mail</string>
+    <string name="forget_password">Forget Password</string>
+    <string name="first_name">First Name</string>
+    <string name="surname">Surname</string>
+    <string name="father_name">Father Name</string>
+    <string name="name">name</string>
+    <string name="description">description</string>
+    <string name="saved">Saved</string>
+    <string name="home">Home</string>
+    <string name="add">Add</string>
+    <string name="location">Location</string>
+    <string name="baku_azerbaijan">Baku,Azerbaijan</string>
+    <string name="search_for_rent">Search for rent</string>
+    <string name="mevcud_konum">Mövcud Konum</string>
+    <string name="descriptions">Description</string>
+    <string name="title_activity_main2">MainActivity2</string>
+    <!-- Strings used for fragments for navigation -->
+    <string name="first_fragment_label">First Fragment</string>
+    <string name="second_fragment_label">Second Fragment</string>
+    <string name="next">Next</string>
+    <string name="previous">Previous</string>
+
+    <string name="hello_first_fragment">Hello first fragment</string>
+    <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
+    <string name="lorem">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s</string>
+    <string name="loremuzun">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500sLorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500sLorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s</string>
+    <string name="beyenilen_text">Bəyəndiyiniz ünvanlar əlinizin altında olsun</string>
+    <string name="unvan_text">Axtarış zamanı bəyəndiyiniz ünvanları burada tapa bilərsiniz</string>
+    <string name="maps">Map</string>
+</resources>
+
