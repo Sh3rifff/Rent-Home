@@ -1,57 +1,85 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical"
-    android:background="#fff"
-    android:padding="20dp">
+    tools:context=".fragments.SavedFragment"
+    android:background="@color/white">
 
     <ImageView
-        android:id="@+id/logoImage"
-        android:layout_width="150dp"
-        android:layout_height="150dp"
-        android:src="@drawable/ev3"/>
+        android:layout_margin="20dp"
+        android:id="@+id/saved_fragment_photo"
+        android:layout_width="250dp"
+        android:layout_gravity="center"
+        android:layout_height="250dp"
+        android:src="@drawable/social"/>
 
     <TextView
-        android:id="@+id/logoName"
+        android:layout_margin="20dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Hello There , Welcome back"
-        android:textSize="40sp"/>
+        android:text="@string/unvan_text"
+        android:textColor="@color/main_color"
+        android:textSize="30sp"/>
 
     <TextView
-        android:id="@+id/sloganName"
+        android:textColor="@color/gray"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Sign in to countinue"
-        android:textSize="18sp"/>
+        android:text="Listleriniz"
+        android:textSize="24sp"
+        android:layout_marginTop="40dp"
+        android:layout_marginStart="20dp"/>
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+    <RelativeLayout
         android:layout_marginStart="20dp"
-        android:layout_marginBottom="20dp">
+        android:layout_marginEnd="20dp"
+        android:layout_marginTop="20dp"
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:background="@drawable/saved_backgr"
+        android:elevation="8dp">
 
-        <com.google.android.material.textfield.TextInputLayout
-            android:layout_width="match_parent"
+        <androidx.cardview.widget.CardView
+            android:id="@+id/card_view_saved"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_centerVertical="true"
+            android:elevation="5dp"
+            android:layout_marginLeft="10dp"
+            app:cardCornerRadius="6dp"
+            android:layout_marginStart="10dp">
+
+            <ImageView
+                android:id="@+id/saved_card_photo"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:scaleType="centerCrop"
+                android:src="@drawable/ev3" />
+
+        </androidx.cardview.widget.CardView>
+
+        <ImageView
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:src="@drawable/saved"
+            android:layout_marginEnd="10dp"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"/>
+
+        <TextView
+            android:layout_width="250dp"
             android:layout_height="wrap_content"
-            android:id="@+id/username"
-            android:hint="Username"
-            style="@style/Widget.Material3.TextInputLayout.OutlinedBox">
-
-            <com.google.android.material.textfield.TextInputEditText
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"/>
-
+            android:layout_centerVertical="true"
+            android:layout_marginStart="10dp"
+            android:layout_toEndOf="@id/card_view_saved"
+            android:text="Ana səhifən bəyənə bilərsiniz"
+            android:textColor="@color/main_color"
+            android:textSize="18sp"/>
 
 
-        </com.google.android.material.textfield.TextInputLayout>
-
-
-
-
-    </LinearLayout>
-
-
+    </RelativeLayout>
 
 </LinearLayout>

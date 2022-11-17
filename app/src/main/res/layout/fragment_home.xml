@@ -44,16 +44,14 @@
                     android:id="@+id/localeName"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_toRightOf="@id/locationIcon"
+                    android:layout_toEndOf="@id/locationIcon"
                     android:hint="Baki,Azerbaijan"
                     android:textColor="@color/main_color"
                     android:textSize="15sp" />
 
             </RelativeLayout>
 
-
         </LinearLayout>
-
 
         <ImageView
             android:layout_width="40dp"
@@ -64,8 +62,19 @@
             android:src="@drawable/ic_notifications"
             app:tint="@color/main_color" />
 
-
     </RelativeLayout>
+
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/currentLocation"
+            android:layout_alignParentEnd="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@color/teal_700"
+            android:src="@drawable/sosloc"
+            app:tint="@color/white"
+            android:layout_gravity="top|end"/>
+
 
     <ScrollView
         android:layout_width="match_parent"
@@ -149,6 +158,7 @@
                         android:src="@drawable/filter" />
 
                 </LinearLayout>
+
 
             </RelativeLayout>
 
@@ -323,10 +333,8 @@
 
             </LinearLayout>
 
-
         </LinearLayout>
 
     </ScrollView>
-
 
 </LinearLayout>

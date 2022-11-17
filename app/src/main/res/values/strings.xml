@@ -34,5 +34,7 @@
     <string name="beyenilen_text">Bəyəndiyiniz ünvanlar əlinizin altında olsun</string>
     <string name="unvan_text">Axtarış zamanı bəyəndiyiniz ünvanları burada tapa bilərsiniz</string>
     <string name="maps">Map</string>
+    <string name="qeydiyyatdan_kec">Hesabin Yoxdur? Qeydiyyatdan keç</string>
+    <string name="qonaq">Qonaq kimi Davam et</string>
 </resources>
 

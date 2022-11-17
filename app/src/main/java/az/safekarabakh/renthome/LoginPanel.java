@@ -4,16 +4,24 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.google.android.material.textfield.TextInputLayout;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
 import az.safekarabakh.renthome.databinding.ActivityLoginPanelBinding;
 
 public class LoginPanel extends AppCompatActivity {
+
+
+    Button callSignUp,login_btn;
+    TextInputLayout username, password;
+
 
     private ActivityLoginPanelBinding binding;
     private FirebaseAuth auth;
@@ -25,6 +33,13 @@ public class LoginPanel extends AppCompatActivity {
         View view = binding.getRoot();
         setContentView(view);
 
+        callSignUp = findViewById(R.id.signup_screen);
+        login_btn = findViewById(R.id.login_btn);
+        username = findViewById(R.id.login_username);
+        password = findViewById(R.id.login_password);
+
+
+
         auth = FirebaseAuth.getInstance();
 
         FirebaseUser user = auth.getCurrentUser();
@@ -34,7 +49,6 @@ public class LoginPanel extends AppCompatActivity {
             startActivity(intent);
             finish();
         }
-
     }
 
     public void SignInClick(View view) {

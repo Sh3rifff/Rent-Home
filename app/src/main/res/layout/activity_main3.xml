@@ -205,7 +205,7 @@
                         android:layout_centerVertical="true">
 
                         <ImageView
-                            android:id="@+id/wifi"
+                            android:id="@+id/wifiImage"
                             android:layout_width="30dp"
                             android:layout_height="30dp"
                             android:layout_centerVertical="true"
@@ -214,11 +214,12 @@
                             app:tint="@color/main_color" />
 
                         <TextView
+                            android:id="@+id/wifi"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_centerVertical="true"
                             android:layout_marginStart="5dp"
-                            android:layout_toEndOf="@id/wifi"
+                            android:layout_toEndOf="@id/wifiImage"
                             android:text="Ailem.net"
                             android:textColor="@color/main_color"
                             android:textSize="15sp"
@@ -241,9 +242,10 @@
                             android:layout_marginStart="15dp"
                             android:scaleType="centerCrop"
                             android:src="@drawable/bed"
-                            app:tint="#327488" />
+                            app:tint="#1E6277" />
 
                         <TextView
+                            android:id="@+id/otaq"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_centerVertical="true"
@@ -273,6 +275,7 @@
                             app:tint="@color/main_color" />
 
                         <TextView
+                            android:id="@+id/mertebe"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_centerVertical="true"

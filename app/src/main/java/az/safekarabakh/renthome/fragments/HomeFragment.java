@@ -3,8 +3,6 @@ package az.safekarabakh.renthome.fragments;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
-import android.location.Address;
-import android.location.Geocoder;
 import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
@@ -15,29 +13,26 @@ import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.EditText;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.appcompat.widget.SearchView;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.google.android.material.textfield.TextInputEditText;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.textfield.TextInputLayout;
 
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
 
-import az.safekarabakh.renthome.MainActivity3;
+import az.safekarabakh.renthome.activities.MainActivity3;
 import az.safekarabakh.renthome.R;
+import az.safekarabakh.renthome.activities.UserAdd;
 import az.safekarabakh.renthome.adapters.CategoriesAdapter;
 import az.safekarabakh.renthome.adapters.FeatureAdapter;
 import az.safekarabakh.renthome.adapters.NearestAdapter;
@@ -57,6 +52,7 @@ public class HomeFragment extends Fragment {
     TextInputLayout searchView;
     ArrayList<FeatureHelperClass> featureLocations;
     FeatureAdapter featureAdapter;
+    FloatingActionButton current;
 
 
     @Override
@@ -67,6 +63,12 @@ public class HomeFragment extends Fragment {
         featuredRecycler = binding.getRoot().findViewById(R.id.feature_recycler);
         categoriesRecycler = binding.getRoot().findViewById(R.id.categories_recycler);
         nearestRecycler = binding.getRoot().findViewById(R.id.nearest_recycler);
+        current = binding.getRoot().findViewById(R.id.currentLocation);
+
+        current.setOnClickListener(v -> {
+            Intent intent = new Intent(getActivity(), UserAdd.class);
+            startActivity(intent);
+        });
 
         searchView = binding.getRoot().findViewById(R.id.tilSearch);
         searchView.clearFocus();
@@ -88,7 +90,7 @@ public class HomeFragment extends Fragment {
         categoriesRecycler();
         featuredRecycler();
         nearestRecycler();
-        localeName();
+//        localeName();
 
         locationManager = (LocationManager) requireContext().getSystemService(Context.LOCATION_SERVICE);
         locationListener = location -> {
@@ -136,37 +138,37 @@ public class HomeFragment extends Fragment {
 
             @Override
             public void onFinish() {
-                mapString();
+//                mapString();
             }
         }.start();
     }
 
-    private void mapString() {
-
-        double latitude = getLastKnownLocation().getLatitude();
-        double longitude = getLastKnownLocation().getLongitude();
-
-        try {
-            Geocoder geo = new Geocoder(this.requireContext(), Locale.getDefault());
-            List<Address> addresses = null;
-            try {
-                addresses = geo.getFromLocation(latitude, longitude, 1);
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-            assert addresses != null;
-            if (addresses.isEmpty()) {
-                Toast.makeText(requireContext(), "Waiting for Location", Toast.LENGTH_SHORT).show();
-            }
-            else {
-                String name = addresses.get(0).getLocality()+ "," + addresses.get(0).getCountryName();
-                localeName.setText(name);
-
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
+//    private void mapString() {
+//
+////        double latitude = getLastKnownLocation().getLatitude();
+////        double longitude = getLastKnownLocation().getLongitude();
+//
+//        try {
+//            Geocoder geo = new Geocoder(this.requireContext(), Locale.getDefault());
+//            List<Address> addresses = null;
+//            try {
+//                addresses = geo.getFromLocation(latitude, longitude, 1);
+//            } catch (IOException e) {
+//                e.printStackTrace();
+//            }
+//            assert addresses != null;
+//            if (addresses.isEmpty()) {
+//                Toast.makeText(requireContext(), "Waiting for Location", Toast.LENGTH_SHORT).show();
+//            }
+//            else {
+//                String name = addresses.get(0).getLocality()+ "," + addresses.get(0).getCountryName();
+//                localeName.setText(name);
+//
+//            }
+//        } catch (Exception e) {
+//            e.printStackTrace();
+//        }
+//    }
 
     @SuppressLint("MissingPermission")
     private Location getLastKnownLocation() {
@@ -195,15 +197,22 @@ public class HomeFragment extends Fragment {
 
         featureLocations = new ArrayList<>();
 
-        featureLocations.add(new FeatureHelperClass(R.drawable.ev1,"Genclik","350₼ /Ayliq"));
-        featureLocations.add(new FeatureHelperClass(R.drawable.ev2,"20 Yanvar","230₼ /Ayliq"));
-        featureLocations.add(new FeatureHelperClass(R.drawable.ev3,"Nerimanov","40₼/Gunluk"));
+        featureLocations.add(new FeatureHelperClass(R.drawable.bina_az_ehmedli,"Ehmedli",
+                "600₼ /Ayliq","İcarəyə verilir 3 otaqlı yeni tikili 136 m², Əhmədli m.,\tYeni tikili","Var","3","15/17"));
+        featureLocations.add(new FeatureHelperClass(R.drawable.ev3,"Nerimanov","40₼/Gunluk","Loremmmmmmmmmm","Yox","5","15/17"));
+        featureLocations.add(new FeatureHelperClass(R.drawable.ev1,"Hezi Aslanov","400₼/Ayliq","Loremmmmmmmmmm","Var","2","15/17"));
+
 
         featureAdapter = new FeatureAdapter(featureLocations, recyclerViewInterface);
         featureAdapter.setRecyclerViewInterface(position -> {
             final Intent intent = new Intent(getActivity(), MainActivity3.class);
             intent.putExtra("Name",featureLocations.get(position).getTitle());
+            intent.putExtra("Cost",featureLocations.get(position).getDescription());
             intent.putExtra("image",featureLocations.get(position).getImage());
+            intent.putExtra("desc_all",featureLocations.get(position).getDescriptionAll());
+            intent.putExtra("Wifi",featureLocations.get(position).getWifi());
+            intent.putExtra("Otaq",featureLocations.get(position).getOtaq());
+            intent.putExtra("Mertebe",featureLocations.get(position).getMertebe());
             startActivity(intent);
 
         });
