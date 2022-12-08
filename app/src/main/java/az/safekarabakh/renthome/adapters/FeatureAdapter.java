@@ -1,5 +1,6 @@
 package az.safekarabakh.renthome.adapters;
 
+import android.annotation.SuppressLint;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -19,8 +20,11 @@ import az.safekarabakh.renthome.recycleritem.RecyclerViewInterface;
 public class FeatureAdapter extends RecyclerView.Adapter<FeatureAdapter.FeatureViewHolder> {
 
     ArrayList<FeatureHelperClass> featureLocations;
+    private RecyclerViewInterface recyclerViewInterface;
 
-    public void setFilteredList(List<FeatureHelperClass> filteredList){
+
+    @SuppressLint("NotifyDataSetChanged")
+    public void setFilteredList(List<FeatureHelperClass> filteredList) {
         this.featureLocations = (ArrayList<FeatureHelperClass>) filteredList;
         notifyDataSetChanged();
     }
@@ -33,8 +37,6 @@ public class FeatureAdapter extends RecyclerView.Adapter<FeatureAdapter.FeatureV
         this.recyclerViewInterface = recyclerViewInterface;
     }
 
-    private RecyclerViewInterface recyclerViewInterface;
-
     public FeatureAdapter(ArrayList<FeatureHelperClass> featureLocations, RecyclerViewInterface recyclerViewInterface) {
         this.featureLocations = featureLocations;
         this.recyclerViewInterface = recyclerViewInterface;
@@ -44,7 +46,7 @@ public class FeatureAdapter extends RecyclerView.Adapter<FeatureAdapter.FeatureV
     @Override
     public FeatureViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.featured_card_design,parent,false);
+                .inflate(R.layout.featured_card_design, parent, false);
 
         FeatureViewHolder featureViewHolder = new FeatureViewHolder(view, recyclerViewInterface);
         return featureViewHolder;
@@ -78,16 +80,13 @@ public class FeatureAdapter extends RecyclerView.Adapter<FeatureAdapter.FeatureV
             title = itemView.findViewById(R.id.feature_title);
             desc = itemView.findViewById(R.id.feature_description);
 
-            itemView.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    if (recyclerViewInterface != null){
-                        int pos = getAdapterPosition();
-                        if (pos != RecyclerView.NO_POSITION){
-                            recyclerViewInterface.onItemClick(pos);
-                        }
-                    }
+            itemView.setOnClickListener(v -> {
 
+                if (recyclerViewInterface != null) {
+                    int pos = getAdapterPosition();
+                    if (pos != RecyclerView.NO_POSITION) {
+                        recyclerViewInterface.onItemClick(pos);
+                    }
                 }
             });
         }

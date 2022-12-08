@@ -7,17 +7,17 @@
         android:title="@string/home" />
     <item
         android:id="@+id/add"
-        android:icon="@drawable/add"
+        android:icon="@drawable/maplast"
         android:title="@string/add"
 
         />
     <item
         android:id="@+id/love"
-        android:icon="@drawable/love"
+        android:icon="@drawable/savelast"
         android:title="@string/saved" />
     <item
         android:id="@+id/profile"
-        android:icon="@drawable/search"
+        android:icon="@drawable/ic_baseline_search_24"
         android:title="@string/profile" />
 
 

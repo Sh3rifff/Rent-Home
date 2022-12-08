@@ -1,57 +1,76 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#fefefe"
+    android:background="#fff"
     android:orientation="vertical"
     tools:context=".MainActivity">
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/currentLocation"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="24dp"
+        android:layout_marginBottom="24dp"
+        android:backgroundTint="@color/main_color"
+        android:src="@drawable/ic_baseline_add_24"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:tint="@color/white" />
 
     <RelativeLayout
         android:id="@+id/topLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="15dp">
+        android:paddingLeft="15dp"
+        android:paddingTop="15dp"
+        android:paddingRight="15dp"
+        android:paddingBottom="0dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
-        <LinearLayout
+
+        <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:layout_marginStart="10dp"
+            android:text="@string/mevcud_konum"
+            android:textColor="@color/main_color"
+            android:textSize="12sp" />
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginTop="30dp">
+
+            <ImageView
+                android:id="@+id/locationIcon"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_centerVertical="true"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="20dp"
+                android:scaleType="centerCrop"
+                android:src="@drawable/locaticon" />
 
             <TextView
+                android:id="@+id/localeName"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="10dp"
-                android:text="@string/mevcud_konum"
+                android:layout_centerVertical="true"
+                android:layout_marginTop="20dp"
+                android:layout_toEndOf="@id/locationIcon"
+                android:hint="Baki,Azerbaijan"
                 android:textColor="@color/main_color"
-                android:textSize="12sp" />
+                android:textColorHint="@color/gray"
+                android:textSize="15sp" />
 
-            <RelativeLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content">
+        </RelativeLayout>
 
-                <ImageView
-                    android:id="@+id/locationIcon"
-                    android:layout_width="20dp"
-                    android:layout_height="20dp"
-                    android:layout_centerVertical="true"
-                    android:layout_marginStart="10dp"
-                    android:scaleType="centerCrop"
-                    android:src="@drawable/locaticon" />
-
-                <TextView
-                    android:id="@+id/localeName"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_toEndOf="@id/locationIcon"
-                    android:hint="Baki,Azerbaijan"
-                    android:textColor="@color/main_color"
-                    android:textSize="15sp" />
-
-            </RelativeLayout>
-
-        </LinearLayout>
 
         <ImageView
             android:layout_width="40dp"
@@ -64,25 +83,17 @@
 
     </RelativeLayout>
 
-
-        <com.google.android.material.floatingactionbutton.FloatingActionButton
-            android:id="@+id/currentLocation"
-            android:layout_alignParentEnd="true"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:backgroundTint="@color/teal_700"
-            android:src="@drawable/sosloc"
-            app:tint="@color/white"
-            android:layout_gravity="top|end"/>
-
-
     <ScrollView
+        android:id="@+id/scrollView2"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/topLayout">
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="0dp"
             android:orientation="vertical">
 
 
@@ -97,14 +108,15 @@
 
                     <com.google.android.material.textfield.TextInputLayout
                         android:id="@+id/tilSearch"
+                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                         android:layout_width="0dp"
-                        android:layout_height="60dp"
+                        android:layout_height="56dp"
                         android:layout_margin="16dp"
                         android:layout_weight="1"
+                        android:elevation="8dp"
                         android:gravity="center|start"
                         android:hint="@string/search_for_rent"
                         app:boxBackgroundColor="@color/main_color"
-                        android:elevation="8dp"
                         app:startIconDrawable="@drawable/ic_baseline_search_24">
 
                         <com.google.android.material.textfield.TextInputEditText
@@ -114,44 +126,9 @@
 
                     </com.google.android.material.textfield.TextInputLayout>
 
-<!--                                        <RelativeLayout-->
-<!--                                            android:layout_width="match_parent"-->
-<!--                                            android:layout_height="40dp"-->
-<!--                                            android:layout_below="@id/topLayout"-->
-<!--                                            android:layout_marginLeft="20dp"-->
-<!--                                            android:layout_marginTop="20dp"-->
-<!--                                            android:layout_marginRight="20dp"-->
-<!--                                            android:layout_marginBottom="20dp"-->
-<!--                                            android:layout_weight="0.75"-->
-<!--                                            android:background="@drawable/search_bar"-->
-<!--                                            android:elevation="8dp"-->
-<!--                                            tools:ignore="NotSibling">-->
-
-<!--                                            <EditText-->
-<!--                                                android:layout_width="wrap_content"-->
-<!--                                                android:layout_height="wrap_content"-->
-<!--                                                android:layout_centerVertical="true"-->
-<!--                                                android:layout_toRightOf="@id/search_cicon"-->
-<!--                                                android:hint="Search bar..."-->
-<!--                                                android:textColorHint="#AEAEAE"-->
-<!--                                                android:textSize="16sp" />-->
-
-<!--                                            <ImageView-->
-<!--                                                android:id="@+id/search_cicon"-->
-<!--                                                android:layout_width="25dp"-->
-<!--                                                android:layout_height="25dp"-->
-<!--                                                android:layout_alignParentLeft="true"-->
-<!--                                                android:layout_centerVertical="true"-->
-<!--                                                android:layout_marginLeft="10dp"-->
-<!--                                                android:layout_marginRight="15dp"-->
-<!--                                                android:src="@drawable/search" />-->
-
-
-<!--                                        </RelativeLayout>-->
-
                     <ImageView
-                        android:layout_width="60dp"
-                        android:layout_height="60dp"
+                        android:layout_width="56dp"
+                        android:layout_height="56dp"
                         android:layout_gravity="center_vertical"
                         android:layout_marginEnd="15dp"
                         android:elevation="8dp"
@@ -181,21 +158,12 @@
                         android:layout_height="wrap_content"
                         android:layout_alignParentStart="true"
                         android:layout_alignParentBottom="true"
-                        android:layout_marginStart="2dp"
+                        android:layout_marginStart="10dp"
                         android:fontFamily="@font/alata"
-                        android:text="Categories"
+                        android:text="@string/kateqoriyalar"
                         android:textColor="@color/main_color"
                         android:textSize="20sp"
                         android:textStyle="bold" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_alignParentRight="true"
-                        android:layout_centerVertical="true"
-                        android:text="Viewe All"
-                        android:textColor="@color/main_color"
-                        android:textSize="15sp" />
 
 
                 </RelativeLayout>
@@ -225,21 +193,12 @@
                         android:layout_height="wrap_content"
                         android:layout_alignParentStart="true"
                         android:layout_alignParentBottom="true"
-                        android:layout_marginStart="2dp"
+                        android:layout_marginStart="10dp"
                         android:fontFamily="@font/alata"
-                        android:text="En cox teleb"
+                        android:text="@string/n_y_ks_k_reytinq"
                         android:textColor="@color/main_color"
                         android:textSize="20sp"
                         android:textStyle="bold" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_alignParentRight="true"
-                        android:layout_centerVertical="true"
-                        android:text="Viewe All"
-                        android:textColor="@color/main_color"
-                        android:textSize="15sp" />
 
 
                 </RelativeLayout>
@@ -268,21 +227,12 @@
                         android:layout_height="wrap_content"
                         android:layout_alignParentStart="true"
                         android:layout_alignParentBottom="true"
-                        android:layout_marginStart="2dp"
+                        android:layout_marginStart="10dp"
                         android:fontFamily="@font/alata"
-                        android:text="Sene daha yaxin"
+                        android:text="Sənə daha yaxın"
                         android:textColor="@color/main_color"
                         android:textSize="20sp"
                         android:textStyle="bold" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_alignParentRight="true"
-                        android:layout_centerVertical="true"
-                        android:text="Viewe All"
-                        android:textColor="@color/main_color"
-                        android:textSize="15sp" />
 
                 </RelativeLayout>
 
@@ -297,7 +247,7 @@
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="20dp"
                 android:layout_marginTop="30dp"
                 android:orientation="vertical"
                 android:padding="20dp">
@@ -314,15 +264,6 @@
                         android:text="Most Viewed"
                         android:textSize="20sp" />
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_alignParentEnd="true"
-                        android:layout_centerVertical="true"
-                        android:text="Viewe All"
-                        android:textSize="15sp" />
-
-
                 </RelativeLayout>
 
                 <androidx.recyclerview.widget.RecyclerView
@@ -337,4 +278,4 @@
 
     </ScrollView>
 
-</LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

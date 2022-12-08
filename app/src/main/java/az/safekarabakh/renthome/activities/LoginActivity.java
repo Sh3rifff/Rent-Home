@@ -16,6 +16,8 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 
+import java.util.Objects;
+
 import az.safekarabakh.renthome.MainActivity;
 import az.safekarabakh.renthome.R;
 
@@ -39,6 +41,7 @@ public class LoginActivity extends AppCompatActivity {
         guest.setOnClickListener(v -> {
             Intent intent = new Intent(LoginActivity.this, MainActivity.class);
             startActivity(intent);
+            finish();
         });
 
         callSignUp.setOnClickListener(v -> {
@@ -52,7 +55,7 @@ public class LoginActivity extends AppCompatActivity {
 
     }
     private Boolean validateUsername() {
-        String val = username.getEditText().getText().toString();
+        String val = Objects.requireNonNull(username.getEditText()).getText().toString();
 
         if (val.isEmpty()) {
             username.setError("Bura bos qala bilmez");
@@ -66,7 +69,7 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     private Boolean validatePassword()  {
-        String val = password.getEditText().getText().toString();
+        String val = Objects.requireNonNull(password.getEditText()).getText().toString();
 
         if (val.isEmpty()) {
             password.setError("Bura bos qala bilmez");
@@ -87,8 +90,8 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     private void isUser() {
-        String userEnteredUsername = username.getEditText().getText().toString().trim();
-        String userEnteredPassword = password.getEditText().getText().toString().trim();
+        String userEnteredUsername = Objects.requireNonNull(username.getEditText()).getText().toString().trim();
+        String userEnteredPassword = Objects.requireNonNull(password.getEditText()).getText().toString().trim();
 
         DatabaseReference reference = FirebaseDatabase.getInstance().getReference("users");
 
@@ -104,6 +107,7 @@ public class LoginActivity extends AppCompatActivity {
 
                     String passwordFromDB = snapshot.child(userEnteredUsername).child("password").getValue(String.class);
 
+                    assert passwordFromDB != null;
                     if (passwordFromDB.equals(userEnteredPassword)){
 
                         username.setError(null);
@@ -135,4 +139,6 @@ public class LoginActivity extends AppCompatActivity {
             }
         });
     }
+
+    
 }

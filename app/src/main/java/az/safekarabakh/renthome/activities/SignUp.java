@@ -10,6 +10,8 @@ import com.google.android.material.textfield.TextInputLayout;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
+import java.util.Objects;
+
 import az.safekarabakh.renthome.R;
 import az.safekarabakh.renthome.helperClass.UserHelperClass;
 
@@ -54,7 +56,7 @@ public class SignUp extends AppCompatActivity {
     }
 
     private Boolean validateName() {
-        String val = regName.getEditText().getText().toString();
+        String val = Objects.requireNonNull(regName.getEditText()).getText().toString();
 
         if (val.isEmpty()) {
             regName.setError("Bura bos qala bilmez");

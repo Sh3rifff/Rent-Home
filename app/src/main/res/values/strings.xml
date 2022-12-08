@@ -19,7 +19,7 @@
     <string name="baku_azerbaijan">Baku,Azerbaijan</string>
     <string name="search_for_rent">Search for rent</string>
     <string name="mevcud_konum">Mövcud Konum</string>
-    <string name="descriptions">Description</string>
+    <string name="descriptions">Məlumat</string>
     <string name="title_activity_main2">MainActivity2</string>
     <!-- Strings used for fragments for navigation -->
     <string name="first_fragment_label">First Fragment</string>
@@ -34,7 +34,19 @@
     <string name="beyenilen_text">Bəyəndiyiniz ünvanlar əlinizin altında olsun</string>
     <string name="unvan_text">Axtarış zamanı bəyəndiyiniz ünvanları burada tapa bilərsiniz</string>
     <string name="maps">Map</string>
-    <string name="qeydiyyatdan_kec">Hesabin Yoxdur? Qeydiyyatdan keç</string>
-    <string name="qonaq">Qonaq kimi Davam et</string>
+    <string name="qeydiyyatdan_kec">Qeydiyyatdan keç</string>
+    <string name="qonaq">Ziyarətçi hesab</string>
+    <string name="n_y_ks_k_reytinq">Ən Yüksək reytinq</string>
+    <string name="kateqoriyalar">Kateqoriyalar</string>
+    <string name="n_rimanov_30_azn_g_nluk">Nərimanov 30 Azn/günluk</string>
+    <string name="_300_metr">300 Metr</string>
+    <string name="metro">Metro</string>
+    <string name="market">Neptun market</string>
+    <string name="n_qiliyyata_yax_nl">Nəqiliyyata yaxınlığı</string>
+    <string name="avtobus">Avtobus</string>
+    <string name="var">Var</string>
+    <string name="yox">Yox</string>
+    <string name="yerl_diyi_razi">Yerləşdiyi Ərazi</string>
+    <string name="yadda_a_yaz">Yaddaşa yaz</string>
 </resources>
 

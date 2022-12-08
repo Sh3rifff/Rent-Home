@@ -4,6 +4,9 @@ import android.Manifest;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.pm.PackageManager;
+import android.graphics.Bitmap;
+import android.graphics.Canvas;
+import android.graphics.drawable.Drawable;
 import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
@@ -25,11 +28,18 @@ import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
+import com.google.android.gms.maps.model.BitmapDescriptor;
+import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.material.snackbar.Snackbar;
 
+import java.util.Objects;
+
 import az.safekarabakh.renthome.R;
+import az.safekarabakh.renthome.database.Place;
+import az.safekarabakh.renthome.database.Room.PlaceDao;
+import az.safekarabakh.renthome.database.Room.PlaceDatabase;
 import az.safekarabakh.renthome.databinding.FragmentAddBinding;
 
 public class AddFragment extends Fragment {
@@ -39,6 +49,7 @@ public class AddFragment extends Fragment {
     ActivityResultLauncher<String> permissionLauncher;
     LocationManager locationManager;
     LocationListener locationListener;
+    PlaceDao placeDao;
 
     private final OnMapReadyCallback callback = new OnMapReadyCallback() {
 
@@ -59,15 +70,56 @@ public class AddFragment extends Fragment {
             } else {
                 if (getLastKnownLocation() != null) {
                     LatLng lastUserLocation = new LatLng(getLastKnownLocation().getLatitude(), getLastKnownLocation().getLongitude());
-                    mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(lastUserLocation, 16));
+                    mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(lastUserLocation, 9));
                 }
                 mMap.setMyLocationEnabled(true);
             }
             mMap.getUiSettings().setMyLocationButtonEnabled(false);
+
+
             LatLng Sharif = new LatLng(40.410853, 49.846406);
-            mMap.addMarker(new MarkerOptions().position(Sharif).title("Marker in Sharif"));
+            mMap.addMarker(new MarkerOptions().position(Sharif).title("Marker in Sharif")
+                    .icon(bitmapDescriptorFromVector(getContext(), R.drawable.markersvg)).snippet("Standard"));
+            mMap.setOnMarkerClickListener(marker -> false);
+
+            placeDao = PlaceDatabase.getDatabase(getContext()).placeDao();
+
+            for (Place place : placeDao.getAll()) {
+                if (place.getLatitude() != null && place.getLongitude() != null) {
+                    LatLng position = new LatLng(place.getLatitude(), place.getLongitude());
+                    mMap.addMarker(new MarkerOptions().position(position).title(place.getRayon())
+                            .icon(bitmapDescriptorFromVector(getContext(), R.drawable.markersvg)));
+                    System.out.println(place.getLongitude());
+                }
+            }
+
+//            mMap.setOnMarkerClickListener(marker -> {
+//                for (Place place : placeDao.getAll()) {
+//                    if (place.getLatitude() != null && place.getLongitude() != null) {
+//                        LatLng position = new LatLng(place.getLatitude(), place.getLongitude());
+//                        mMap.addMarker(new MarkerOptions().position(position).title(place.getRayon())
+//                                .icon(bitmapDescriptorFromVector(getContext(), R.drawable.markersvg)));
+//
+//                        System.out.println(place.getQiymet());
+//
+//                    }
+//                }
+//                return false;
+//
+//            });
         }
     };
+
+
+    private BitmapDescriptor bitmapDescriptorFromVector(Context context, int vectorResId) {
+        Drawable vectorDrawable = ContextCompat.getDrawable(context, vectorResId);
+        Objects.requireNonNull(vectorDrawable).setBounds(0, 0, vectorDrawable.getIntrinsicWidth(), vectorDrawable.getIntrinsicHeight());
+        Bitmap bitmap = Bitmap.createBitmap(vectorDrawable.getIntrinsicWidth(), vectorDrawable.getIntrinsicHeight(), Bitmap.Config.ARGB_8888);
+        Canvas canvas = new Canvas(bitmap);
+        vectorDrawable.draw(canvas);
+        return BitmapDescriptorFactory.fromBitmap(bitmap);
+
+    }
 
     @SuppressLint("MissingPermission")
     private Location getLastKnownLocation() {
@@ -92,13 +144,9 @@ public class AddFragment extends Fragment {
             addFragment.getMapAsync(callback);
         }
 
-
         binding.currentLocation.setOnClickListener(v -> moveToCurrentLocation());
         registerLauncher();
-
     }
-
-
 
     @SuppressLint("MissingPermission")
     private void registerLauncher() {

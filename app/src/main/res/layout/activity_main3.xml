@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#800000">
@@ -31,19 +30,19 @@
                 app:layout_collapseMode="parallax" />
 
             <androidx.appcompat.widget.Toolbar
+                android:id="@+id/toolbar"
                 android:layout_width="match_parent"
                 android:layout_height="?attr/actionBarSize"
-                app:layout_collapseMode="pin"
-                android:id="@+id/toolbar"/>
+                app:layout_collapseMode="pin" />
 
         </com.google.android.material.appbar.CollapsingToolbarLayout>
 
     </com.google.android.material.appbar.AppBarLayout>
 
     <androidx.core.widget.NestedScrollView
-        android:background="@drawable/lay_bg"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:background="@drawable/lay_bg"
         app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior">
 
         <LinearLayout
@@ -71,8 +70,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentEnd="true"
-                    android:layout_marginEnd="20dp"
                     android:layout_centerInParent="true"
+                    android:layout_marginEnd="20dp"
                     android:progressBackgroundTint="@color/gray"
                     android:progressTint="@color/yellow"
                     android:rating="2.7" />
@@ -83,7 +82,7 @@
                     android:layout_centerInParent="true"
                     android:layout_marginEnd="10dp"
                     android:layout_toStartOf="@id/ratingBar"
-                    android:text="Rating"
+                    android:text="Reytinq"
                     android:textColor="@color/main_color"
                     android:textSize="15sp"
                     android:textStyle="bold" />
@@ -139,19 +138,13 @@
                     android:id="@+id/feature_recyle_item_location"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
                     android:layout_gravity="center_horizontal"
                     android:layout_marginTop="10dp"
                     android:layout_toEndOf="@id/locationMv"
                     android:text="Baki,Azerbaijan"
-                    android:layout_centerVertical="true"
                     android:textColor="@color/main_color"
                     android:textSize="20sp" />
-
-            </RelativeLayout>
-
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
 
             </RelativeLayout>
 
@@ -187,7 +180,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="15dp"
                     android:layout_marginTop="20dp"
-                    android:text="Specification"
+                    android:text="Spesifikasiya"
                     android:textColor="@color/main_color"
                     android:textSize="20sp"
                     android:textStyle="bold" />
@@ -271,7 +264,7 @@
                             android:layout_centerVertical="true"
                             android:layout_marginStart="15dp"
                             android:scaleType="centerCrop"
-                            android:src="@drawable/washing"
+                            android:src="@drawable/stair"
                             app:tint="@color/main_color" />
 
                         <TextView
@@ -291,52 +284,94 @@
                 </RelativeLayout>
 
             </RelativeLayout>
+
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
                 <TextView
-                    android:id="@+id/pecification"
+                    android:id="@+id/neqiliyyat"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="15dp"
                     android:layout_marginTop="20dp"
-                    android:text="Nese olsun"
+                    android:text="@string/n_qiliyyata_yax_nl"
                     android:textColor="@color/main_color"
                     android:textSize="20sp"
                     android:textStyle="bold" />
 
                 <TextView
-                    android:id="@+id/sth"
-                    android:layout_below="@id/pecification"
+                    android:id="@+id/metro"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_below="@id/neqiliyyat"
                     android:layout_marginStart="15dp"
                     android:layout_marginTop="20dp"
-                    android:text="@string/loremuzun"
-                    android:textColor="@color/main_color" />
-
+                    android:text="@string/metro"
+                    android:textColor="@color/main_color"
+                    android:textSize="15sp" />
 
                 <TextView
-                    android:id="@+id/ddd"
-                    android:layout_below="@id/sth"
+                    android:id="@+id/metr"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="15dp"
+                    android:layout_below="@id/neqiliyyat"
+                    android:layout_alignParentEnd="true"
                     android:layout_marginTop="20dp"
-                    android:text="@string/lorem"
-                    android:textColor="@color/main_color" />
-
+                    android:layout_marginEnd="20dp"
+                    android:text="@string/_300_metr"
+                    android:textColor="@color/main_color"
+                    android:textSize="15sp" />
 
                 <TextView
-                    android:id="@+id/sthe"
-                    android:layout_below="@id/ddd"
+                    android:id="@+id/avtobus"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/metro"
+                    android:layout_marginStart="15dp"
+                    android:layout_marginTop="20dp"
+                    android:text="@string/avtobus"
+                    android:textColor="@color/main_color"
+                    android:textSize="15sp" />
+
+                <TextView
+                    android:id="@+id/avtobus_metr"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/metr"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginEnd="20dp"
+                    android:text="@string/_300_metr"
+                    android:textColor="@color/main_color"
+                    android:textSize="15sp" />
+
+            </RelativeLayout>
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:id="@+id/etrafdakiler"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="15dp"
                     android:layout_marginTop="20dp"
-                    android:text="@string/loremuzun"
-                    android:textColor="@color/main_color" />
+                    android:text="Etrafindakiler"
+                    android:textColor="@color/main_color"
+                    android:textSize="20sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/market"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/etrafdakiler"
+                    android:layout_marginStart="15dp"
+                    android:layout_marginTop="20dp"
+                    android:text="@string/market"
+                    android:textColor="@color/main_color"
+                    android:textSize="15sp" />
 
 
             </RelativeLayout>
